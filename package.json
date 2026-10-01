@@ -1,0 +1,12 @@
+{
+  "name": "xunwei-plandraft-synthetic-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "寻味 PlanDraft 与 SQLite 本地合成演示",
+  "engines": {
+    "node": "26.8.1"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}

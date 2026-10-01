@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>寻味 · 核心行程草稿</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f7f8f6;
+      --surface: #ffffff;
+      --ink: #18201d;
+      --muted: #61706a;
+      --line: #d9dfdc;
+      --accent: #c8422f;
+      --accent-dark: #9f2f20;
+      --forest: #245b45;
+      --notice: #eef4f0;
+      font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      min-height: 100vh;
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .masthead {
+      width: min(1040px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 24px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    h1, h2, p { margin-top: 0; }
+    h1 {
+      margin-bottom: 0;
+      font-family: "Songti SC", "STSong", serif;
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: right;
+    }
+
+    main {
+      width: min(1040px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 40px 0 56px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+      gap: 48px;
+      align-items: start;
+    }
+
+    .workspace h2 {
+      margin-bottom: 8px;
+      font-size: 22px;
+      letter-spacing: 0;
+    }
+
+    .lede {
+      max-width: 620px;
+      margin-bottom: 28px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    form {
+      display: grid;
+      gap: 22px;
+    }
+
+    label {
+      display: grid;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    input {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid #aeb9b4;
+      border-radius: 4px;
+      background: var(--surface);
+      color: var(--ink);
+      font: inherit;
+    }
+
+    input:disabled {
+      color: #4e5a55;
+      background: #edf0ee;
+    }
+
+    input:focus-visible, button:focus-visible {
+      outline: 3px solid rgba(200, 66, 47, 0.28);
+      outline-offset: 2px;
+    }
+
+    .dates {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding-top: 4px;
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 16px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: var(--surface);
+      color: var(--ink);
+      font: inherit;
+      font-weight: 650;
+      cursor: pointer;
+    }
+
+    button[type="submit"] {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    button[type="submit"]:hover { background: var(--accent-dark); }
+    button:hover { border-color: #899791; }
+
+    .status-panel {
+      border-left: 3px solid var(--forest);
+      padding-left: 20px;
+    }
+
+    .status-panel h2 {
+      margin-bottom: 18px;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .status, .notice {
+      margin-bottom: 12px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: var(--surface);
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .notice {
+      border-color: #b9d0c5;
+      background: var(--notice);
+      color: #234536;
+    }
+
+    .boundary {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    [hidden] { display: none !important; }
+
+    @media (max-width: 760px) {
+      .masthead { align-items: flex-start; flex-direction: column; gap: 8px; }
+      .subtitle { text-align: left; }
+      main { grid-template-columns: 1fr; gap: 34px; padding-top: 28px; }
+      .dates { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="masthead">
+      <h1>寻味</h1>
+      <p class="subtitle">核心行程草稿 · 本机演示</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="workspace" aria-labelledby="draft-heading">
+      <h2 id="draft-heading">保存一段可找回的行程</h2>
+      <p class="lede">这里只保存合成目的地与日期，用来演示首次保存、继续修改和显式恢复。</p>
+
+      <form id="plan-draft-form" novalidate>
+        <label for="destination-name">
+          演示目的地
+          <input id="destination-name" name="destinationName" value="演示目的地" maxlength="80" autocomplete="off" required>
+        </label>
+
+        <div class="dates">
+          <label for="start-date">
+            出发日期
+            <input id="start-date" name="startDate" type="date" value="2026-10-01" required>
+          </label>
+          <label for="end-date">
+            返程日期
+            <input id="end-date" name="endDate" type="date" value="2026-10-01" required>
+          </label>
+        </div>
+
+        <div class="actions">
+          <button id="save-draft" type="submit">保存草稿</button>
+          <button id="restore-draft" type="button">恢复草稿</button>
+          <button id="retry-pointer" type="button" hidden>重试记住入口</button>
+        </div>
+      </form>
+    </section>
+
+    <aside class="status-panel" aria-labelledby="status-heading" aria-live="polite">
+      <h2 id="status-heading">当前状态</h2>
+      <p id="demo-status" class="status">尚未保存草稿。</p>
+      <p id="destination-lock-notice" class="notice" hidden></p>
+      <p id="dynamic-facts-stale" class="notice" hidden></p>
+      <p class="boundary">恢复的是核心行程，不含天气、路线、票务或完整景点安排。本页不会调用外部服务。</p>
+    </aside>
+  </main>
+
+  <script src="/api.js"></script>
+  <script src="/plan-draft.js"></script>
+  <script src="/plan-draft-demo.js"></script>
+</body>
+</html>
